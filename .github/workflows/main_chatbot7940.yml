@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://mychat7940.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_cf739ea37a3e4922a24a39760f2f1a14 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_841c511dab474f849ecbe0193bb5bec9 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_8fd08f1705d7468286b115004fcfed72 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_7cd53c4d49e34836a0828bcdf6e29acf }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: ${{ secrets.AzureAppService_ContainerUsername_cf739ea37a3e4922a24a39760f2f1a14 }}/mychat7940:${{ github.sha }}
+        tags: ${{ secrets.AzureAppService_ContainerUsername_8fd08f1705d7468286b115004fcfed72 }}/mychat7940:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'chatbot7940'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_8bb42d63b0a24a5982f089fba1d39cfb }}
-        images: 'mychat7940.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_cf739ea37a3e4922a24a39760f2f1a14 }}/mychat7940:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_4aae8198c7c24be8853c3c4c53b7172c }}
+        images: 'mychat7940.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_8fd08f1705d7468286b115004fcfed72 }}/mychat7940:${{ github.sha }}'
